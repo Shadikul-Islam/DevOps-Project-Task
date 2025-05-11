@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  registry:
+    image: registry:2.8.3
+    container_name: docker-registry
+    ports:
+    - "5000:5000"
+    environment:
+      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data
+    volumes:
+      - docker-registry-data:/var/lib/registry
+    networks:
+      - docker-registry-net
+    restart: always
+
+  registry-ui:
+    image: konradkleine/docker-registry-frontend:v2
+    container_name: docker-registry-ui
+    ports:
+      - 8090:80
+    environment:
+      - ENV_DOCKER_REGISTRY_HOST=registry
+      - ENV_DOCKER_REGISTRY_PORT=5000
+    networks:
+      - docker-registry-net
+    restart: always
+
+networks:
+  docker-registry-net:
+    name: docker-registry-net
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.35.0.0/16
+
+volumes:
+  docker-registry-data:
+    name: docker-registry-data
+    driver: local
