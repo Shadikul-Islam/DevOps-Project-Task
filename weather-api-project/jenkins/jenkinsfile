@@ -10,12 +10,12 @@ pipeline {
         GIT_CREDENTIALS_ID = 'git-access'
         BRANCH = 'master'
         DOCKER_REGISTRY = '13.126.216.160:5000'
-        SSH_CREDENTIALS_ID_DEPLOYMENT_SERVER = 'deployment-server'
+        SSH_CREDENTIALS_ID = 'deployment-server'
         DEPLOY_SERVER = 'ubuntu@13.126.216.160'
     }
 
     stages {
-        stage('Clone Code') {
+        stage('Clone the Project') {
             steps {
                 script {
                     git branch: "${BRANCH}", credentialsId: "${GIT_CREDENTIALS_ID}", url: "${GIT_REPO}"
@@ -31,7 +31,7 @@ pipeline {
             }
         }
 
-        stage('Tag & Push Docker Image to Registry') {
+        stage('Push Docker Image to Registry') {
             steps {
                 script {
                     sh "docker push ${DOCKER_IMAGE}:${IMAGE_VERSION}"
@@ -39,10 +39,10 @@ pipeline {
             }
         }
 
-        stage('Deploy to Server') {
+        stage('Deploy Into Server') {
             steps {
                 script {
-                    sshagent([SSH_CREDENTIALS_ID_DEPLOYMENT_SERVER]) {
+                    sshagent([SSH_CREDENTIALS_ID]) {
                     sh '''
                         ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "docker pull ${DOCKER_IMAGE}:${IMAGE_VERSION}"
                         ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "docker stop weather-api-container || true"
