@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile.dev
+    container_name: weather-api-container
+    image: weather-api-image:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../code/:/project/
+    restart: always
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
