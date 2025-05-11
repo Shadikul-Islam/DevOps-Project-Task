@@ -43,12 +43,14 @@ pipeline {
             steps {
                 script {
                     sshagent([SSH_CREDENTIALS_ID]) {
-                    sh '''
-                        ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "docker pull ${DOCKER_IMAGE}:${IMAGE_VERSION}"
-                        ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "docker stop weather-api-container || true"
-                        ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "docker rm weather-api-container || true"
-                        ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "docker run -d --name weather-api-container -p 8000:8000 ${DOCKER_IMAGE}:${IMAGE_VERSION}"
-                    '''
+                        sh """
+                            ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} "
+                                docker pull ${DOCKER_IMAGE}:${IMAGE_VERSION};
+                                docker stop weather-api-container || true;
+                                docker rm weather-api-container || true;
+                                docker run -d --name weather-api-container -p 8000:8000 ${DOCKER_IMAGE}:${IMAGE_VERSION}
+                            "
+                        """
                     }
                 }
             }
