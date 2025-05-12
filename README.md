@@ -32,7 +32,7 @@ This repository contains the solution to a DevOps challenge that includes develo
   - **Sample JSON response:**
     ```json
     {
-      "hostname": "ip-172-31-23-5",
+      "hostname": "server1",
       "datetime": "2505121502",
       "version": "v1.0.0",
       "weather": {
@@ -192,8 +192,8 @@ This repository contains the solution to a DevOps challenge that includes develo
 
 ## <a name="06">Local Setup & Testing</a>
   ### Setup
-    - Clone the repo: ```git clone```
-    - Go inside the directory: ```cd weather-api-project/docker```
+    - Clone the repo: ```git clone https://github.com/Shadikul-Islam/DevOps-Project-Task.git```
+    - Go inside the directory: ```cd DevOps-Project-Task/weather-api-project/docker```
     - Run Project: ```docker-compose up --build```
 
   ### Testing
