@@ -1,4 +1,4 @@
-# DevOps Challenge: API Development, Deployment & System Architecture
+<h2 align="center">DevOps Challenge: API Development, Deployment & System Architecture</h2>
 
 <br><br><br>
 
