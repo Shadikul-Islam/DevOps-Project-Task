@@ -98,7 +98,7 @@ This repository contains the solution to a DevOps challenge that includes develo
 
   - **Pipeline Includes:**
 
-    - Trigger on GitHub release creation
+    - Pull latest code from Github
   
     - Build and tag Docker image using the release version
   
@@ -234,14 +234,14 @@ This repository contains the solution to a DevOps challenge that includes develo
 <br>
 
 ## <a name="06">Local Setup & Testing</a>
-  ### Setup
-    - Clone the repo: ```git clone https://github.com/Shadikul-Islam/DevOps-Project-Task.git```
-    - Go inside the directory: ```cd DevOps-Project-Task/weather-api-project/docker```
-    - Run Project: ```docker-compose up --build```
+### Setup
+- Clone the repo: ```git clone https://github.com/Shadikul-Islam/DevOps-Project-Task.git```
+- Go inside the directory: ```cd DevOps-Project-Task/weather-api-project/docker```
+- Run Project: ```docker-compose up --build```
 
-  ### Testing
-    - http://localhost:8000/api/hello
-    - http://localhost:8000/api/health
+### Testing
+- http://localhost:8000/api/hello
+- http://localhost:8000/api/health
 
 
 <br>
@@ -257,9 +257,9 @@ This repository contains the solution to a DevOps challenge that includes develo
       │       └── jenkins-success.png
 
 
-### 1. Architecture-diagram
+### 1. Cloud Architecture Diagram
 
-<img src= "https://github.com/Shadikul-Islam/DevOps-Project-Task/blob/master/images/screenshots/architecture-diagram.png" alt="architecture-diagram"> <br><be
+<img src= "https://github.com/Shadikul-Islam/DevOps-Project-Task/blob/master/images/architecture-diagram.png" alt="architecture-diagram"> <br><be
                                                                                                                              >
 
 ### 2. Flask-api-response
@@ -283,7 +283,3 @@ This project showcases a comprehensive DevOps workflow—from API development to
 In Part A, a resilient and extensible REST API was built, containerized, and deployed with zero downtime using Kubernetes and Jenkins. In Part B, the proposed system architecture is designed to handle millions of global requests efficiently, focusing on scalability, high availability, and cost optimization.
 
 This challenge provided a practical opportunity to apply DevOps principles end-to-end, reinforcing the importance of automation, modularity, and security in modern application delivery pipelines.
-
-
-
-
