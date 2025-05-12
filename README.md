@@ -1,5 +1,7 @@
 # DevOps Challenge: API Development, Deployment & System Architecture
 
+<br><br><br>
+
 | **SL** | **Topic** |
 | --- | --- |
 | 01 | [Introduction](#01) |
@@ -16,6 +18,8 @@
 ## <a name="01">Introduction</a>
 
 This repository contains the solution to a DevOps challenge that includes developing and deploying a REST API (Part A), and designing a scalable system architecture for an e-commerce application (Part B). The project uses Python Flask, Jenkins, AWS, Docker, Kubernetes, and Terraform.
+
+<br>
 
 ## <a name="02">Repository Structure</a>
 
@@ -61,7 +65,7 @@ This repository contains the solution to a DevOps challenge that includes develo
                   ├── docker.jenkinsfile
                   └── k8s.jenkinsfile
 
-
+<br>
 
 ## <a name="03">Part A: Develop & Deploy a REST API</a>
 
@@ -271,8 +275,6 @@ This repository contains the solution to a DevOps challenge that includes develo
 ### 2. Jenkins Success Pipeline
 
 <img src= "https://github.com/Shadikul-Islam/DevOps-Project-Task/blob/master/images/screenshots/jenkins-success.png" alt="jenkins-success"> <br><br>
-
-
 
 
 <br>
