@@ -142,7 +142,7 @@ This repository contains the solution to a DevOps challenge that includes develo
 
 <br>
    
-## <a name="04">Part B:System Architecture Design</a>
+## <a name="04">Part B: System Architecture Design</a>
 
 ### 1. Web Application Using AWS Services
 
@@ -252,7 +252,7 @@ This repository contains the solution to a DevOps challenge that includes develo
     
 ## <a name="07">Screenshots</a>
 
-### Structure
+### 1. Directory Structure
 
       ├── images
       │   ├── architecture-diagram.png
@@ -261,18 +261,18 @@ This repository contains the solution to a DevOps challenge that includes develo
       │       └── jenkins-success.png
 
 
-### 1. Cloud Architecture Diagram
+### 2. Cloud Architecture Diagram
 
 <img src= "https://github.com/Shadikul-Islam/DevOps-Project-Task/blob/master/images/architecture-diagram.png" alt="architecture-diagram"> <br><be
                                                                                                                              >
 
-### 2. Flask-api-response
+### 3. Flask-api-response
 
 <img src= "https://github.com/Shadikul-Islam/DevOps-Project-Task/blob/master/images/screenshots/flask-api-response.png" alt="flask-api-response"> <br><br>
 
 
 
-### 2. Jenkins Success Pipeline
+### 4. Jenkins Success Pipeline
 
 <img src= "https://github.com/Shadikul-Islam/DevOps-Project-Task/blob/master/images/screenshots/jenkins-success.png" alt="jenkins-success"> <br><br>
 
