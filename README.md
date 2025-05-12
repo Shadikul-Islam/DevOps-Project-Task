@@ -9,8 +9,7 @@
 | 05 | [Security Highlights](#05) |
 | 06 | [Local Setup & Testing](#06) |
 | 07 | [Screenshots](#07) |
-| 08 | [Author Notes](#08) |
-| 09 | [Conclusion](#09) |
+| 08 | [Conclusion](#08) |
 
 <br>
 
@@ -19,6 +18,50 @@
 This repository contains the solution to a DevOps challenge that includes developing and deploying a REST API (Part A), and designing a scalable system architecture for an e-commerce application (Part B). The project uses Python Flask, Jenkins, AWS, Docker, Kubernetes, and Terraform.
 
 ## <a name="02">Repository Structure</a>
+
+      └── DevOps-Project-Task
+          ├── docker-registry-setup
+          │   └── docker-compose.yml
+          ├── images
+          │   ├── architecture-diagram.png
+          │   └── screenshots
+          │       ├── flask-api-response.png
+          │       └── jenkins-success.png
+          ├── jenkins-setup
+          │   ├── docker-compose.yml
+          │   └── Dockerfile
+          ├── k8s-manifest
+          │   ├── deployment.yml
+          │   ├── secret.yml
+          │   └── service.yml
+          ├── README.md
+          ├── terraform
+          │   ├── envs
+          │   │   └── prod
+          │   │       ├── main.tf
+          │   │       ├── terraform.tfstate
+          │   │       ├── terraform.tfvars
+          │   │       └── variables.tf
+          │   └── modules
+          │       └── eks
+          │           ├── main.tf
+          │           ├── outputs.tf
+          │           └── variables.tf
+          └── weather-api-project
+              ├── code
+              │   ├── app
+              │   │   ├── __init__.py
+              │   │   └── main.py
+              │   └── requirements.txt
+              ├── docker
+              │   ├── docker-compose.yml
+              │   ├── Dockerfile.dev
+              │   └── Dockerfile.prod
+              └── jenkins
+                  ├── docker.jenkinsfile
+                  └── k8s.jenkinsfile
+
+
 
 ## <a name="03">Part A: Develop & Deploy a REST API</a>
 
@@ -205,25 +248,36 @@ This repository contains the solution to a DevOps challenge that includes develo
     
 ## <a name="07">Screenshots</a>
 
+### Structure
+
+      ├── images
+      │   ├── architecture-diagram.png
+      │   └── screenshots
+      │       ├── flask-api-response.png
+      │       └── jenkins-success.png
+
+
+### 1. Architecture-diagram
+
+<img src= "https://github.com/Shadikul-Islam/DevOps-Project-Task/blob/master/images/screenshots/architecture-diagram.png" alt="architecture-diagram"> <br><be
+                                                                                                                             >
+
+### 2. Flask-api-response
+
+<img src= "https://github.com/Shadikul-Islam/DevOps-Project-Task/blob/master/images/screenshots/flask-api-response.png" alt="flask-api-response"> <br><br>
+
+
+
+### 2. Jenkins Success Pipeline
+
+<img src= "https://github.com/Shadikul-Islam/DevOps-Project-Task/blob/master/images/screenshots/jenkins-success.png" alt="jenkins-success"> <br><br>
+
+
 
 
 <br>
 
-## <a name="08">Author Notes</a>
-  - This project reflects best practices in DevOps for:
-  
-    - CI/CD with Jenkins
-    
-    - Infrastructure-as-Code with Terraform
-    
-    - Container orchestration using Kubernetes
-    
-    - Secure and scalable microservice design
-
-
-<br>
-
-## <a name="09">Conclusion</a>
+## <a name="08">Conclusion</a>
 This project showcases a comprehensive DevOps workflow—from API development to production-ready deployment—by integrating modern technologies such as Flask, Docker, Jenkins, Terraform, and Kubernetes on AWS. Through modular infrastructure-as-code, secure CI/CD pipelines, and a scalable architecture design, the solution demonstrates best practices in automation, observability, and cloud-native development.
 
 In Part A, a resilient and extensible REST API was built, containerized, and deployed with zero downtime using Kubernetes and Jenkins. In Part B, the proposed system architecture is designed to handle millions of global requests efficiently, focusing on scalability, high availability, and cost optimization.
