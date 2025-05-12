@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-api-deployment
+  namespace: sadik
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weather-api
+  template:
+    metadata:
+      labels:
+        app: weather-api
+    spec:
+      containers:
+        - name: weather-api-container
+          image: 13.126.216.160:5000/weather-api/weather-api-image:v1.0.0
+          ports:
+            - containerPort: 80
+          env:
+            - name: WEATHER_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: weather-api-secret
+                  key: weather_api_key
