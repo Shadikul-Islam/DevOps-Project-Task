@@ -1,0 +1,95 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'IMAGE_VERSION', defaultValue: '1.0.0', description: 'Enter the version for the Docker image')
+    }
+
+    environment {
+        DOCKER_IMAGE = '13.126.216.160:5000/weather-api/weather-api-image'
+        GIT_REPO = 'https://github.com/Shadikul-Islam/DevOps-Project-Task.git'
+        GIT_CREDENTIALS_ID = 'git-access'
+        BRANCH = 'master'
+        DOCKER_REGISTRY = '13.126.216.160:5000'
+        SSH_CREDENTIALS_ID = 'deployment-server'
+        DEPLOY_SERVER = 'ubuntu@13.126.216.160'
+        K8S_NAMESPACE = 'sadik'
+        K8S_DEPLOYMENT_NAME = 'weather-api-deployment'
+        K8S_SERVICE_NAME = 'weather-api-service'
+        K8S_SECRET_NAME = 'weather-api-secret'
+    }
+
+    stages {
+        stage('Clone the Project') {
+            steps {
+                script {
+                    git branch: "${BRANCH}", credentialsId: "${GIT_CREDENTIALS_ID}", url: "${GIT_REPO}"
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh "cd weather-api-project && docker build -f ./docker/Dockerfile.prod -t ${DOCKER_IMAGE}:${IMAGE_VERSION} ."
+                }
+            }
+        }
+
+        stage('Push Docker Image to Registry') {
+            steps {
+                script {
+                    sh "docker push ${DOCKER_IMAGE}:${IMAGE_VERSION}"
+                }
+            }
+        }
+
+        stage('Apply Kubernetes Secrets') {
+            steps {
+                script {
+                    sh """
+                        kubectl apply -f k8s-manifest/secret.yml -n ${K8S_NAMESPACE}
+                    """
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    sh """
+                        kubectl apply -f k8s-manifest/deployment.yml -n ${K8S_NAMESPACE}
+                    """
+                }
+            }
+        }
+
+        stage('Expose Kubernetes Service') {
+            steps {
+                script {
+                    sh """
+                        kubectl apply -f k8s-manifest/service.yaml -n ${K8S_NAMESPACE}
+                    """
+                }
+            }
+        }
+
+        stage('Validate Deployment') {
+            steps {
+                script {
+                    sh """
+                        kubectl get pods -n ${K8S_NAMESPACE}
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
